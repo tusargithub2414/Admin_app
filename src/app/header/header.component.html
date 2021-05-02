@@ -1,12 +1,12 @@
   <!-- Navigation-->
-  <nav
-    class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(151, 209, 192)"
+  <nav style="background-color: #fff;box-shadow: 0px 1px 2px #6c6c6c77;"
+    class="navbar navbar-expand-lg navbar-light fixed-top"
     id="mainNav"
   >
     <a>
       <img src="../../assets/image/logo-emp.png" height="40">
     </a>
-     <span class="fa fa-bars toggle-menu-icon" (click)="showMyContainer=!showMyContainer"></span>
+     <!-- <span class="fa fa-bars toggle-menu-icon" (click)="showMyContainer=!showMyContainer"></span> -->
     <button
       class="navbar-toggler navbar-toggler-right"
       type="button"
@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="showMyContainer">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style=" overflow-y: scroll;">
         <li class="nav-item" *ngFor="let menue of menues; let i = index " data-toggle="tooltip" data-placement="right">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" [href]="('#menue' + i.toString())"
+          <a class="nav-link nav-link-collapse collapsed" [id]="('main_menue' + i.toString())" data-toggle="collapse" [href]="('#menue' + i.toString())"
             data-parent="#exampleAccordion">
             <i class="fa fa-folder mr-2"></i>
             <span class="nav-link-text">{{menue.ModuleName}}</span>
@@ -29,7 +29,7 @@
           <ul class="sidenav-second-level collapse" *ngFor = "let children of menue.children; let j = index" [id]="('menue' + i.toString())">
 
             <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" [href]="('#collapseMulti2' + j.toString()+ i.toString())">
+              <a class="nav-link-collapse collapsed" [id]="('sub_main_menu' + j.toString()+ i.toString())" data-toggle="collapse" [href]="('#collapseMulti2' + j.toString()+ i.toString())">
                 <i class="fa fa-folder-open mr-2"></i>
                 <span class="nav-link-text">{{children.ModuleName}}</span>
               </a>
@@ -37,8 +37,8 @@
 
               <ul class="sidenav-third-level collapse"  [id]="('collapseMulti2' + j.toString() + i.toString())" *ngFor="let grandChild of children.children1">
                 <li>
-                  <a (click)="gotToGrandChild(grandChild)">
-                    <i class="fa fa-folder-open mr-2"></i>
+                  <a class="active" (click)="gotToGrandChild(grandChild)">
+                    <i class="fa fa-file mr-2"></i>
                     <span class="nav-link-text"> {{grandChild.ModuleName}}</span>
                   </a>
                 </li>
