@@ -1,0 +1,7 @@
+<div class="row mb-3">
+  <div class="col-3" *ngFor="let subCatagory of subCatgorylist">
+    <div class="card empluse-card mb-2" (click)="getDataForGrandChildren(subCatagory)">
+    <p> {{subCatagory.SubCategoryName}} ({{subCatagory.FormCount}}) </p>
+    </div>
+  </div>
+</div>

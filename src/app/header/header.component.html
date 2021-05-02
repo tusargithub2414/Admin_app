@@ -1,0 +1,70 @@
+  <!-- Navigation-->
+  <nav
+    class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(151, 209, 192)"
+    id="mainNav"
+  >
+    <a>
+      <img src="../../assets/image/logo-emp.png" height="40">
+    </a>
+     <span class="fa fa-bars toggle-menu-icon" (click)="showMyContainer=!showMyContainer"></span>
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="showMyContainer">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style=" overflow-y: scroll;">
+        <li class="nav-item" *ngFor="let menue of menues; let i = index " data-toggle="tooltip" data-placement="right">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" [href]="('#menue' + i.toString())"
+            data-parent="#exampleAccordion">
+            <i class="fa fa-folder mr-2"></i>
+            <span class="nav-link-text">{{menue.ModuleName}}</span>
+          </a>
+          <ul class="sidenav-second-level collapse" *ngFor = "let children of menue.children; let j = index" [id]="('menue' + i.toString())">
+
+            <li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" [href]="('#collapseMulti2' + j.toString()+ i.toString())">
+                <i class="fa fa-folder-open mr-2"></i>
+                <span class="nav-link-text">{{children.ModuleName}}</span>
+              </a>
+
+
+              <ul class="sidenav-third-level collapse"  [id]="('collapseMulti2' + j.toString() + i.toString())" *ngFor="let grandChild of children.children1">
+                <li>
+                  <a (click)="gotToGrandChild(grandChild)">
+                    <i class="fa fa-folder-open mr-2"></i>
+                    <span class="nav-link-text"> {{grandChild.ModuleName}}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
